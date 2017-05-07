@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Configuration {
 
@@ -48,7 +50,21 @@ public class Configuration {
             if (eqpos == -1) {
                 throw new IllegalArgumentException("Illegal line : " + line);
             }
-            readProps.put(line.substring(0,eqpos),line.substring(eqpos+1));
+
+            String key = line.substring(0, eqpos);
+            String value = line.substring(eqpos+1);
+
+            // Interpolate env variable syntax
+            if (value.startsWith("$")) {
+                Pattern pattern = Pattern.compile("\\$\\{(.+)\\}");
+                Matcher matcher = pattern.matcher(value);
+                matcher.find();
+                String envVariableName = matcher.group(1);
+                value = System.getenv(envVariableName);
+            }
+
+
+            readProps.put(key, value);
         }
         properties = readProps;
     }
