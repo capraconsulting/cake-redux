@@ -23,16 +23,9 @@ public class WebServer {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args == null || args.length < 1) {
-            System.out.println("Usage WebServer <Config file name> [war-file-path]");
-            return;
-        }
-        String warFile = null;
-        if (args.length > 1) {
-            warFile = args[1];
-        }
-        System.setProperty("cake-redux-config-file",args[0]);
-        new WebServer(getPort(8081),warFile).start();
+        String configFileLocation = "application-" + System.getenv("CAKE_REDUX_ENV") + ".properties";
+        System.setProperty("cake-redux-config-file", configFileLocation);
+        new WebServer(getPort(8081), null).start();
     }
 
 

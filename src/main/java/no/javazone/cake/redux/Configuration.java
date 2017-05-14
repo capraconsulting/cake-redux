@@ -97,6 +97,10 @@ public class Configuration {
         return authorizedUsers;
     }
 
+    public static String getAuthorizedDomain() {
+        return getProperty("authorizedDomain");
+    }
+
     public static String autorizedUserFile() {
         return getProperty("autorizedUserFile");
     }

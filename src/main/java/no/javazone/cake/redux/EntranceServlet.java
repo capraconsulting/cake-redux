@@ -75,7 +75,7 @@ public class EntranceServlet extends HttpServlet {
         userEmail = userInfo.requiredString("email");
 
         String userid = username + "<" + userEmail + ">";
-        if (!haveAccess(userid)) {
+        if (!haveAccess(userid, userEmail)) {
             resp
                     .sendError(HttpServletResponse.SC_FORBIDDEN, "User not registered " + userid);
             return;
@@ -88,7 +88,11 @@ public class EntranceServlet extends HttpServlet {
         writeLoginMessage(resp, writer, userid);
     }
 
-    private boolean haveAccess(String userid) {
+    private boolean haveAccess(String userid, String userEmail) {
+        if (userEmail.endsWith(Configuration.getAuthorizedDomain())) {
+            return true;
+        }
+
         if (Configuration.getAutorizedUsers().contains(userid)) {
             return true;
         }
