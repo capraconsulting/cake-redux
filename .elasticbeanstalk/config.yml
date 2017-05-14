@@ -1,0 +1,4 @@
+branch-defaults:
+  master:
+    environment: cake-redux-prod
+    group_suffix: null

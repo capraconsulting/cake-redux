@@ -1,0 +1,15 @@
+branch-defaults:
+  master:
+    environment: cake-redux-prod
+environment-defaults:
+  submit-prod:
+    branch: null
+    repository: null
+global:
+  application_name: capracon-cakeredux
+  default_platform: Java 8
+  default_region: eu-central-1
+  profile: capra
+  sc: git
+deploy:
+  artifact: app.zip
