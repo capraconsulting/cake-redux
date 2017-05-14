@@ -49,7 +49,7 @@ public class DataServletWriteTest {
 
         servlet.service(req,resp);
 
-        verify(sleepingpillCommunicator).update("abra", Arrays.asList("test"),Arrays.asList("keyone"),"pending","Tue, 04 Feb 2014 23:55:06 GMT",UserAccessType.WRITE);
+        verify(sleepingpillCommunicator).update("abra", Arrays.asList("test"),Arrays.asList("keyone"),"pending","Tue, 04 Feb 2014 23:55:06 GMT",UserAccessType.FULL);
 
     }
 

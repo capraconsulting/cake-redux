@@ -134,7 +134,7 @@ public class Configuration {
     }
 
     public static String smtpServer() {
-        return getProperty("smthost");
+        return getProperty("smtphost");
     }
 
     public static int smtpPort() {
@@ -192,7 +192,7 @@ public class Configuration {
     }
 
     public static String sleepingPillBaseLocation() {
-        return readConf("sleepingPillBaseLocation","http://localhost:8082");
+        return readConf("sleepingpillBaseLocation","http://localhost:8082");
     }
 
     public static String sleepingpillUser() {

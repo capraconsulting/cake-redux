@@ -169,13 +169,14 @@ public class DataServlet extends HttpServlet {
 
 
     private static UserAccessType computeAccessType(HttpServletRequest request) {
-        String fullusers = Optional.ofNullable(Configuration.fullUsers()).orElse("");
-        if (Optional.ofNullable(request.getSession().getAttribute("username"))
-            .filter(un -> fullusers.contains((String) un))
-            .isPresent()) {
-            return UserAccessType.FULL;
-        }
-        return UserAccessType.WRITE;
+//        String fullusers = Optional.ofNullable(Configuration.fullUsers()).orElse("");
+//        if (Optional.ofNullable(request.getSession().getAttribute("username"))
+//            .filter(un -> fullusers.contains((String) un))
+//            .isPresent()) {
+//            return UserAccessType.FULL;
+//        }
+        // TODO: Figure out if only certain persons should have this access type
+        return UserAccessType.FULL;
     }
 
     private void acceptTalks(HttpServletRequest req, HttpServletResponse resp) throws IOException {
